@@ -68,6 +68,26 @@ OpenJDK 64-Bit Server VM (build 15+36-1562, mixed mode, sharing)
 """),
     )
 
+    asserts.equals(
+        env,
+        21,
+        parse_java_version("""
+openjdk version "21-beta" 2023-09-19
+OpenJDK Runtime Environment Temurin-21+20-202305171830 (build 21-beta+20-202305171830)
+OpenJDK 64-Bit Server VM Temurin-21+20-202305171830 (build 21-beta+20-202305171830, mixed mode, sharing)
+"""),
+    )
+
+    asserts.equals(
+        env,
+        21,
+        parse_java_version("""
+openjdk version "21-ea" 2023-09-19
+OpenJDK Runtime Environment (build 21-ea+24-2086)
+OpenJDK 64-Bit Server VM (build 21-ea+24-2086, mixed mode, sharing)
+"""),
+    )
+
     return unittest.end(env)
 
 parse_java_version_test = unittest.make(_parse_java_version_test_impl)

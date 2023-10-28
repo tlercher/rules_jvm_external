@@ -11,12 +11,14 @@
 def parse_java_version(java_version_output):
     # Look for 'version "x.y.z"' in the output'
     if len(java_version_output.split("version ")) > 1:
-        java_version = java_version_output.split("version ")[1].partition("\n")[0].split(" ")[0].replace("\"", "")
+        java_version = java_version_output.split("version ")[1].partition("\n")[0].split(" ")[0].replace("\"", "").strip()
     else:
         return None
 
     if not java_version:
         return None
+    elif "-" in java_version:
+        return int(java_version.split("-")[0])
     elif "." not in java_version:
         return int(java_version)
     elif java_version.startswith("1."):
